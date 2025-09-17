@@ -1,6 +1,10 @@
+import { Link } from "react-router";
+
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+
+    <nav className=" fixed w-full">
+    <div className="navbar py-12 container ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -20,58 +24,57 @@ const Navbar = () => {
               />{" "}
             </svg>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Item 1</a>
+           <li>
+              <Link className="font-medium text-[17px] text-heading" to={"/desitnations"}>Desitnations</Link>
             </li>
             <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <Link className="font-medium text-[17px] text-heading" to={"/hotels"}>Hotels</Link>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link className="font-medium text-[17px] text-heading" to={"/flights"}>Flights</Link>
             </li>
+            <li>
+              <Link className="font-medium text-[17px] text-heading" to={"/bookings"}>Bookings</Link>
+            </li> 
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+
+        <Link to={"/"} className="btn btn-ghost text-xl">
+          <img src="Logo.svg" alt="logo" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+              <Link className="font-medium text-[17px] text-heading" to={"/desitnations"}>Desitnations</Link>
+            </li>
+            <li>
+              <Link className="font-medium text-[17px] text-heading" to={"/hotels"}>Hotels</Link>
+            </li>
+            <li>
+              <Link className="font-medium text-[17px] text-heading" to={"/flights"}>Flights</Link>
+            </li>
+            <li>
+              <Link className="font-medium text-[17px] text-heading" to={"/bookings"}>Bookings</Link>
+            </li>  
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end space-x-2">
+        <Link to={"/login"} className ="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black">Login</Link>
+        <Link to={"/signup"} className ="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black">Sign up</Link>
+        <select defaultValue="Server location" className="select select-neutral w-15 border-0 bg-transparent">
+        <option>EN</option>
+        <option>BN</option>
+       
+      </select>
       </div>
     </div>
+    </nav>
   );
 };
 
