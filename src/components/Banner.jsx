@@ -18,7 +18,7 @@ const Banner = () => {
           <p className=" text-base text-paragraph leading-[30px]">Built Wicket longer admire do barton vanity itself do in it. Preferred to sportsmen it engrossed listening. Park gate sell they west hard for the.</p>
           <div>
             <Button >Find out more</Button>
-            <Button TagName="a" btnStyle="secondary">Play Demo</Button>
+            <Button TagName="a" btnStyle="secondary"> Play Demo</Button>
           </div>
         </div>
         <div>
