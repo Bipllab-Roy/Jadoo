@@ -1,4 +1,5 @@
 import Banner from "../components/Banner"
+import DestinationSection from "../components/DestinationSection"
 import ServiceSection from "../components/ServiceSection"
 
 
@@ -7,6 +8,7 @@ const Home = () => {
     <>
     <Banner />
     <ServiceSection/>
+    <DestinationSection/>
     </>
   )
 }
