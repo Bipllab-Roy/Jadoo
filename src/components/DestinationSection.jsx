@@ -1,11 +1,47 @@
-
+import { destination_1} from "../constant/constant"
+import DestinationCard from './DestinationCard'
 import DestinationHeading from './DestinationHeading'
+
+
+const destinationData=[
+  {
+    id:1,
+    icon: destination_1 ,
+    place:"Rome, Italty",
+    price:"$5,42k",
+    day:"10 Days Trip"
+
+  },
+  {
+    id:2,
+    icon: destination_2 ,
+    place:"Rome, Italty",
+    price:"$5,42k",
+    day:"10 Days Trip"
+
+  },
+  {
+    id:3,
+    icon: destination_3 ,
+    place:"Rome, Italty",
+    price:"$5,42k",
+    day:"10 Days Trip"
+
+  }
+]
 
 const DestinationSection = () => {
   return (
-    <section>
+    <section >
+
       <div className='container'>
+      <div >
         <DestinationHeading heading={"Top Destinations" } subHeading={"Top Selling"}/>
+      </div>
+      <div className='grid grid-cols-3'>
+          {destinationData?.map(destination=> <DestinationCard key={destination.id} destination={destination}/>)}
+      </div>
+
       </div>
     </section>
   )
