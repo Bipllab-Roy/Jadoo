@@ -1,4 +1,4 @@
-import { destination_1} from "../constant/constant"
+import { destination_1, destination_2, destination_3} from "../constant/constant"
 import DestinationCard from './DestinationCard'
 import DestinationHeading from './DestinationHeading'
 
@@ -15,17 +15,17 @@ const destinationData=[
   {
     id:2,
     icon: destination_2 ,
-    place:"Rome, Italty",
-    price:"$5,42k",
-    day:"10 Days Trip"
+    place:"London, UK",
+    price:"$4.2k",
+    day:"20 Days Trip"
 
   },
   {
     id:3,
     icon: destination_3 ,
-    place:"Rome, Italty",
-    price:"$5,42k",
-    day:"10 Days Trip"
+    place:"Full Europe",
+    price:"$15k",
+    day:"16 Days Trip"
 
   }
 ]

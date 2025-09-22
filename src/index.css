@@ -31,6 +31,7 @@
   --color-paragraph:#5E6282;
   --color-yellow:#F1A501;
   --color-orange:#DF6951;
+  --color-white:#ffffff;
 
   /* breakpoint */
   --breakpoint-*: initial;
