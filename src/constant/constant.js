@@ -14,4 +14,18 @@ import trip_3 from "../assets/trip-3.svg"
 
 import nextTrip from "../assets/nextTrip.svg"
 
-export{service_icon_1,service_icon_2,service_icon_3,service_icon_4, destinations_1,destinations_2,destinations_3 ,trip_1,trip_2,trip_3,nextTrip}
+import testimonial_1 from "../assets/testimonial-1.svg"
+
+export{service_icon_1,
+    service_icon_2,
+    service_icon_3,
+    service_icon_4,
+     destinations_1,
+     destinations_2,
+     destinations_3 ,
+     trip_1,
+     trip_2,
+     trip_3,
+     nextTrip,
+     testimonial_1
+    }

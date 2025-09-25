@@ -57,85 +57,87 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link
+                <NavLink
                   className="font-medium text-[17px] text-heading"
                   to={"/hotels"}
                 >
                   Hotels
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   className="font-medium text-[17px] text-heading"
                   to={"/flights"}
                 >
                   Flights
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   className="font-medium text-[17px] text-heading"
                   to={"/bookings"}
                 >
                   Bookings
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
 
-          <Link to={"/"} className="btn btn-ghost text-xl">
+
+
+          <NavLink to={"/"} className="btn btn-ghost text-xl">
             <img src="Logo.svg" alt="logo" />
-          </Link>
+          </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link
+              <NavLink
                 className="font-medium text-[17px] text-heading"
                 to={"/desitnations"}
               >
                 Desitnations
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 className="font-medium text-[17px] text-heading"
                 to={"/hotels"}
               >
                 Hotels
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 className="font-medium text-[17px] text-heading"
                 to={"/flights"}
               >
                 Flights
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 className="font-medium text-[17px] text-heading"
                 to={"/bookings"}
               >
                 Bookings
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end space-x-2">
-          <Link
+          <NavLink
             to={"/login"}
             className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
           >
             Login
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={"/signup"}
             className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
           >
             Sign up
-          </Link>
+          </NavLink>
           <select
             defaultValue="Server location"
             className="select select-neutral w-15 border-0 bg-transparent"
