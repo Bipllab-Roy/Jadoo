@@ -42,7 +42,7 @@ const TestimonialSection = () => {
             />
           </div>
           <div className="testimonial_slider">
-            <div>
+            <div className="">
       <Swiper
         direction={'vertical'}
         pagination={{
