@@ -3,7 +3,14 @@ import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const navbar = useRef(null);
-  console.log(navbar.current);
+  // console.log(navbar.current);
+
+  const activeStyle=({ isActive, isPending, isTransitioning }) =>
+                    [
+                      isPending ? "pending" : "",
+                      isActive ? "text-red-500 font-medium text-[17px]" : "text-heading font-medium text-[17px]",
+                      isTransitioning ? "transitioning" : "",
+                    ].join(" ")
 
   window.addEventListener("scroll", () => {
     const value = window.scrollY;
@@ -46,7 +53,7 @@ const Navbar = () => {
                   className={({ isActive, isPending, isTransitioning }) =>
                     [
                       isPending ? "pending" : "",
-                      isActive ? "text-red-500" : "text-heading",
+                      isActive ? "text-red-500 font-medium text-[17px]" : "text-heading font-medium text-[17px]",
                       isTransitioning ? "transitioning" : "",
                     ].join(" ")
                   }
@@ -58,7 +65,7 @@ const Navbar = () => {
 
               <li>
                 <NavLink
-                  className="font-medium text-[17px] text-heading"
+                  className={activeStyle}
                   to={"/hotels"}
                 >
                   Hotels
@@ -93,7 +100,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
-                className="font-medium text-[17px] text-heading"
+                className={activeStyle}
                 to={"/desitnations"}
               >
                 Desitnations
@@ -101,7 +108,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                className="font-medium text-[17px] text-heading"
+                className={activeStyle}
                 to={"/hotels"}
               >
                 Hotels
@@ -109,7 +116,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                className="font-medium text-[17px] text-heading"
+                className={activeStyle}
                 to={"/flights"}
               >
                 Flights
@@ -117,7 +124,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                className="font-medium text-[17px] text-heading"
+                className={activeStyle}
                 to={"/bookings"}
               >
                 Bookings
@@ -126,18 +133,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-2">
-          <NavLink
+          <Link
             to={"/login"}
             className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
           >
             Login
-          </NavLink>
-          <NavLink
+          </Link>
+          <Link
             to={"/signup"}
             className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
           >
             Sign up
-          </NavLink>
+          </Link>
           <select
             defaultValue="Server location"
             className="select select-neutral w-15 border-0 bg-transparent"
