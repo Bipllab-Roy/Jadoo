@@ -67,7 +67,7 @@ const Footer = () => {
             <li>
               <a
                 href="https://www.facebook.com/"
-                className="rounded-full flex bg-white social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
+                className="rounded-full flex bg-white footerShadow social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
               >
                 <svg
                   width="7"
@@ -77,18 +77,19 @@ const Footer = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path className="group-hover:fill-white transition-all duration-100 "
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    // fill-rule="evenodd"
+                    // clip-rule="evenodd"
                     d="M6.10837 2.24446C5.78831 2.14321 5.42023 2.0757 5.08417 2.0757C4.66809 2.0757 3.77191 2.36259 3.77191 2.91948V4.25266H5.90033V6.49712H3.77191V12.6905H1.6275V6.49712H0.571289V4.25266H1.6275V3.12199C1.6275 1.41755 2.36364 0 4.13999 0C4.7481 0 5.83632 0.0337513 6.42843 0.253134L6.10837 2.24446Z"
                     fill="#080809"
                   />
                 </svg>
               </a>
             </li>
+
             <li>
               <a
                 href="https://www.instagram.com/?hl=en"
-                className="rounded-full flex bg-white social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
+                className="rounded-full flex bg-white footerShadow social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
               >
                 <svg
                   width="16"
@@ -97,7 +98,7 @@ const Footer = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_1_511)">
+                  <g >
                     <path className="group-hover:fill-white transition-all duration-100 "
                       d="M13.6562 0H2.34375C1.05156 0 0 1.05156 0 2.34375V13.6562C0 14.9487 1.05156 16 2.34375 16H13.6562C14.9487 16 16 14.9487 16 13.6562V2.34375C16 1.05156 14.9487 0 13.6562 0ZM15.0625 13.6562C15.0625 14.4316 14.4316 15.0625 13.6562 15.0625H2.34375C1.56844 15.0625 0.9375 14.4316 0.9375 13.6562V2.34375C0.9375 1.56844 1.56844 0.9375 2.34375 0.9375H13.6562C14.4316 0.9375 15.0625 1.56844 15.0625 2.34375V13.6562Z"
                       fill="black"
@@ -119,10 +120,11 @@ const Footer = () => {
                 </svg>
               </a>
             </li>
+
             <li>
               <a
                 href="https://x.com/?lang=en"
-                className="rounded-full flex bg-white social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
+                className="rounded-full flex bg-white footerShadow social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group "
               >
                 <svg
                   width="16"
@@ -139,6 +141,7 @@ const Footer = () => {
                 </svg>
               </a>
             </li>
+
           </ul>
           <h3 className="font-poppins font-medium text-[20px] text-paragraph pt-6 pb-4">Discover our app</h3>
           <div className="grid grid-cols-2 gap-2">

@@ -5,18 +5,50 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Destinations from "./components/Destinations";
+import PublicRoute from "./route/PublicRoute";
+import AuthLayout from "./layout/AuthLayout";
+import ProtectedRoute from "./route/ProtectedRoute";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 
 const router = createBrowserRouter([
   {
+    path: "/auth",
+   Component:()=>{
+    return(
+      <PublicRoute>
+        <AuthLayout/>
+      </PublicRoute>
+    )
+   },
+    children:[
+      
+      { path: "login", Component: Login},
+      { path: "signup", Component: Signup},
+     
+  ]
+  },
+
+
+
+  {
     path: "/",
-    Component: MainLayout,
+    Component:()=>{
+    return(
+      <ProtectedRoute>
+        <MainLayout/>
+      </ProtectedRoute>
+    )
+   },
     children:[
       { index: true, Component: Home},
-      { path: "/about", Component: About},
-      { path: "/destinations", Component: Destinations},
-      { path: "*", Component: NotFound},
+      { path: "about", Component: About},
+      { path: "destinations", Component: Destinations},
+      
   ]
-  }
+  },
+  { path: "*", Component: NotFound},
+
 ])
 
 const App = () => <RouterProvider router={router}/>  

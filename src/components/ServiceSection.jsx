@@ -30,7 +30,7 @@ const servicesData=[
 ]
 const ServiceSection = () => {
   return (
-    <section className="py-[105px]">
+    <section className="pb-[105px]">
        <div className="container">
         <SectionHeading heading={"We Offer Best Services"} subHeading={"CATEGORY"}/>
         <div  className=" grid grid-cols-4">       

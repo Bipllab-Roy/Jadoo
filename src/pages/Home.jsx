@@ -7,7 +7,9 @@ import TestimonialSection from "../components/sections/TestimonialSection"
 import ServiceSection from "../components/ServiceSection"
 
 
+
 const Home = () => {
+
   return (
     <>
     <Banner />

@@ -44,7 +44,8 @@ const TestimonialSection = () => {
            
                     <Splide  options={ {
                       direction: 'ttb',
-                      height   : '10rem',
+                      height   : '200px',
+                      // gap:"10px"
                       // wheel    : true,
                     } }>
             {TestimonialData?.map((testimonial)=>{
