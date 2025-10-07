@@ -2,70 +2,71 @@ import React from "react";
 import { Link } from "react-router";
 
 const Footer = () => {
+  const year=new Date().getFullYear()
   return (
-    <footer className="bg-base-200 pt-[96px] pb-[80px]">
+    <footer className="bg-white pt-[96px] pb-[80px]">
       <div className="container footer sm:footer-horizontal  text-base-content p-10">
         <aside>
           <svg
-            width="50"
-            height="50"
-            viewBox="0 0 24 24"
+            width="149"
+            height="34"
+            viewBox="0 0 149 34"
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            fillRule="evenodd"
-            clipRule="evenodd"
-            className="fill-current"
           >
-            <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
+            <path
+              d="M18.976 2.42V24.464C18.976 27.192 18.14 29.348 16.468 30.932C14.8253 32.516 12.6547 33.308 9.956 33.308C7.25733 33.308 5.072 32.516 3.4 30.932C1.75733 29.348 0.936 27.192 0.936 24.464H5.996C6.02533 25.8133 6.36267 26.884 7.008 27.676C7.68267 28.468 8.66533 28.864 9.956 28.864C11.2467 28.864 12.2293 28.468 12.904 27.676C13.5787 26.8547 13.916 25.784 13.916 24.464V2.42H18.976ZM25.4639 20.768C25.4639 18.3333 25.9626 16.1773 26.9599 14.3C27.9866 12.4227 29.3653 10.9707 31.0959 9.944C32.8559 8.888 34.7919 8.36 36.9039 8.36C38.8106 8.36 40.4679 8.74133 41.8759 9.504C43.3133 10.2373 44.4573 11.1613 45.3079 12.276V8.756H50.3679V33H45.3079V29.392C44.4573 30.536 43.2986 31.4893 41.8319 32.252C40.3653 33.0147 38.6933 33.396 36.8159 33.396C34.7333 33.396 32.8266 32.868 31.0959 31.812C29.3653 30.7267 27.9866 29.2307 26.9599 27.324C25.9626 25.388 25.4639 23.2027 25.4639 20.768ZM45.3079 20.856C45.3079 19.184 44.9559 17.732 44.2519 16.5C43.5773 15.268 42.6826 14.3293 41.5679 13.684C40.4533 13.0387 39.2506 12.716 37.9599 12.716C36.6693 12.716 35.4666 13.0387 34.3519 13.684C33.2373 14.3 32.3279 15.224 31.6239 16.456C30.9493 17.6587 30.6119 19.096 30.6119 20.768C30.6119 22.44 30.9493 23.9067 31.6239 25.168C32.3279 26.4293 33.2373 27.3973 34.3519 28.072C35.4959 28.7173 36.6986 29.04 37.9599 29.04C39.2506 29.04 40.4533 28.7173 41.5679 28.072C42.6826 27.4267 43.5773 26.488 44.2519 25.256C44.9559 23.9947 45.3079 22.528 45.3079 20.856ZM55.2843 20.768C55.2843 18.3333 55.7829 16.1773 56.7803 14.3C57.8069 12.4227 59.1856 10.9707 60.9163 9.944C62.6763 8.888 64.6269 8.36 66.7683 8.36C68.3523 8.36 69.9069 8.712 71.4323 9.416C72.9869 10.0907 74.2189 11 75.1283 12.144V0.44H80.1883V33H75.1283V29.348C74.3069 30.5213 73.1629 31.4893 71.6963 32.252C70.2589 33.0147 68.6016 33.396 66.7243 33.396C64.6123 33.396 62.6763 32.868 60.9163 31.812C59.1856 30.7267 57.8069 29.2307 56.7803 27.324C55.7829 25.388 55.2843 23.2027 55.2843 20.768ZM75.1283 20.856C75.1283 19.184 74.7763 17.732 74.0723 16.5C73.3976 15.268 72.5029 14.3293 71.3883 13.684C70.2736 13.0387 69.0709 12.716 67.7803 12.716C66.4896 12.716 65.2869 13.0387 64.1723 13.684C63.0576 14.3 62.1483 15.224 61.4443 16.456C60.7696 17.6587 60.4323 19.096 60.4323 20.768C60.4323 22.44 60.7696 23.9067 61.4443 25.168C62.1483 26.4293 63.0576 27.3973 64.1723 28.072C65.3163 28.7173 66.5189 29.04 67.7803 29.04C69.0709 29.04 70.2736 28.7173 71.3883 28.072C72.5029 27.4267 73.3976 26.488 74.0723 25.256C74.7763 23.9947 75.1283 22.528 75.1283 20.856ZM97.2926 33.396C95.0046 33.396 92.9366 32.8827 91.0886 31.856C89.2406 30.8 87.7886 29.3333 86.7326 27.456C85.6766 25.5493 85.1486 23.3493 85.1486 20.856C85.1486 18.392 85.6912 16.2067 86.7766 14.3C87.8619 12.3933 89.3432 10.9267 91.2206 9.9C93.0979 8.87333 95.1952 8.36 97.5126 8.36C99.8299 8.36 101.927 8.87333 103.805 9.9C105.682 10.9267 107.163 12.3933 108.249 14.3C109.334 16.2067 109.877 18.392 109.877 20.856C109.877 23.32 109.319 25.5053 108.205 27.412C107.09 29.3187 105.565 30.8 103.629 31.856C101.722 32.8827 99.6099 33.396 97.2926 33.396ZM97.2926 29.04C98.5832 29.04 99.7859 28.732 100.901 28.116C102.045 27.5 102.969 26.576 103.673 25.344C104.377 24.112 104.729 22.616 104.729 20.856C104.729 19.096 104.391 17.6147 103.717 16.412C103.042 15.18 102.147 14.256 101.033 13.64C99.9179 13.024 98.7152 12.716 97.4246 12.716C96.1339 12.716 94.9312 13.024 93.8166 13.64C92.7312 14.256 91.8659 15.18 91.2206 16.412C90.5752 17.6147 90.2526 19.096 90.2526 20.856C90.2526 23.4667 90.9126 25.4907 92.2326 26.928C93.5819 28.336 95.2686 29.04 97.2926 29.04ZM125.351 33.396C123.063 33.396 120.995 32.8827 119.147 31.856C117.299 30.8 115.847 29.3333 114.791 27.456C113.735 25.5493 113.207 23.3493 113.207 20.856C113.207 18.392 113.75 16.2067 114.835 14.3C115.92 12.3933 117.402 10.9267 119.279 9.9C121.156 8.87333 123.254 8.36 125.571 8.36C127.888 8.36 129.986 8.87333 131.863 9.9C133.74 10.9267 135.222 12.3933 136.307 14.3C137.392 16.2067 137.935 18.392 137.935 20.856C137.935 23.32 137.378 25.5053 136.263 27.412C135.148 29.3187 133.623 30.8 131.687 31.856C129.78 32.8827 127.668 33.396 125.351 33.396ZM125.351 29.04C126.642 29.04 127.844 28.732 128.959 28.116C130.103 27.5 131.027 26.576 131.731 25.344C132.435 24.112 132.787 22.616 132.787 20.856C132.787 19.096 132.45 17.6147 131.775 16.412C131.1 15.18 130.206 14.256 129.091 13.64C127.976 13.024 126.774 12.716 125.483 12.716C124.192 12.716 122.99 13.024 121.875 13.64C120.79 14.256 119.924 15.18 119.279 16.412C118.634 17.6147 118.311 19.096 118.311 20.856C118.311 23.4667 118.971 25.4907 120.291 26.928C121.64 28.336 123.327 29.04 125.351 29.04ZM144.918 33.308C144.008 33.308 143.246 33 142.63 32.384C142.014 31.768 141.706 31.0053 141.706 30.096C141.706 29.1867 142.014 28.424 142.63 27.808C143.246 27.192 144.008 26.884 144.918 26.884C145.798 26.884 146.546 27.192 147.162 27.808C147.778 28.424 148.086 29.1867 148.086 30.096C148.086 31.0053 147.778 31.768 147.162 32.384C146.546 33 145.798 33.308 144.918 33.308Z"
+              fill="#181E4B"
+            />
           </svg>
-          <p>
-            ACME Industries Ltd.
-            <br />
-            Providing reliable tech since 1992
+
+          <p className="pt-5 w-[207px] font-poppins font-medium text-[13px] text-paragraph">
+            Book your trip in minute, get full Control for much longer.
           </p>
         </aside>
         <nav>
-          <h6 className="footer-title text-black font-poppins font-bold">
+          <h6 className=" text-black font-poppins font-bold text-[21px] pb-8">
             Company
           </h6>
-          <Link to={"/about"} className="link link-hover">
+          <Link to={"/about"} className="font-poppins font-medium text-[18px] text-paragraph">
             About
           </Link>
-          <Link to={"/careers"} className="link link-hover">
+          <Link to={"/careers"} className="font-poppins font-medium text-[18px] text-paragraph py-3">
             Careers
           </Link>
-          <Link to={"/mobile"} className="link link-hover">
+          <Link to={"/mobile"} className="font-poppins font-medium text-[18px] text-paragraph">
             Mobile
           </Link>
         </nav>
         <nav>
-          <h6 className="footer-title">Contact</h6>
-          <Link to={"/help/faq"} className="link link-hover">
+          <h6 className=" font-poppins font-bold text-[21px] text-black pb-8">Contact</h6>
+          <Link to={"/help/faq"} className="font-poppins font-medium text-[18px] text-paragraph">
             Help/FAQ
           </Link>
-          <Link to={"/press"} className="link link-hover">
+          <Link to={"/press"} className="font-poppins font-medium text-[18px] text-paragraph py-3">
             Press
           </Link>
-          <Link to={"/affilates"} className="link link-hover">
+          <Link to={"/affilates"} className="font-poppins font-medium text-[18px] text-paragraph">
             Affilates
           </Link>
         </nav>
-        <nav>
-          <h6 className="footer-title">More</h6>
-          <Link to={"/airlinefees"} className="link link-hover">
+        <nav className="">
+          <h6 className=" font-poppins font-bold text-[21px] text-black pb-8">More</h6>
+          <Link to={"/airlinefees"} className=" font-poppins font-medium text-[18px] text-paragraph">
             Airlinefees
           </Link>
-          <Link to={"/airline"} className="link link-hover">
+          <Link to={"/airline"} className="font-poppins font-medium text-[18px] text-paragraph py-3">
             Airline
           </Link>
-          <Link to={"/low fare tips"} className="link link-hover">
+          <Link to={"/low fare tips"} className="font-poppins font-medium text-[18px] text-paragraph">
             Low fare tips
           </Link>
         </nav>
         <nav>
-          <ul className="flex justify-center gap-3 items-center">
+          <ul className="flex justify-center gap-3 items-center h-[46px]">
             <li>
               <a
-                href="/"
+                href="https://www.facebook.com/"
                 className="rounded-full flex bg-white social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
               >
                 <svg
@@ -75,7 +76,7 @@ const Footer = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
+                  <path className="group-hover:fill-white transition-all duration-100 "
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M6.10837 2.24446C5.78831 2.14321 5.42023 2.0757 5.08417 2.0757C4.66809 2.0757 3.77191 2.36259 3.77191 2.91948V4.25266H5.90033V6.49712H3.77191V12.6905H1.6275V6.49712H0.571289V4.25266H1.6275V3.12199C1.6275 1.41755 2.36364 0 4.13999 0C4.7481 0 5.83632 0.0337513 6.42843 0.253134L6.10837 2.24446Z"
@@ -86,7 +87,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="/"
+                href="https://www.instagram.com/?hl=en"
                 className="rounded-full flex bg-white social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
               >
                 <svg
@@ -97,17 +98,17 @@ const Footer = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <g clip-path="url(#clip0_1_511)">
-                    <path
+                    <path className="group-hover:fill-white transition-all duration-100 "
                       d="M13.6562 0H2.34375C1.05156 0 0 1.05156 0 2.34375V13.6562C0 14.9487 1.05156 16 2.34375 16H13.6562C14.9487 16 16 14.9487 16 13.6562V2.34375C16 1.05156 14.9487 0 13.6562 0ZM15.0625 13.6562C15.0625 14.4316 14.4316 15.0625 13.6562 15.0625H2.34375C1.56844 15.0625 0.9375 14.4316 0.9375 13.6562V2.34375C0.9375 1.56844 1.56844 0.9375 2.34375 0.9375H13.6562C14.4316 0.9375 15.0625 1.56844 15.0625 2.34375V13.6562Z"
-                      fill="white"
+                      fill="black"
                     />
-                    <path
+                    <path className="group-hover:fill-white transition-all duration-100 "
                       d="M13.1562 1.90625C12.6394 1.90625 12.2188 2.32687 12.2188 2.84375C12.2188 3.36063 12.6394 3.78125 13.1562 3.78125C13.6731 3.78125 14.0938 3.36063 14.0938 2.84375C14.0938 2.32687 13.6731 1.90625 13.1562 1.90625Z"
-                      fill="white"
+                      fill="black"
                     />
-                    <path
+                    <path className="group-hover:fill-white transition-all duration-100 "
                       d="M8 3.78125C5.67375 3.78125 3.78125 5.67375 3.78125 8C3.78125 10.3263 5.67375 12.2188 8 12.2188C10.3263 12.2188 12.2188 10.3263 12.2188 8C12.2188 5.67375 10.3263 3.78125 8 3.78125ZM8 11.2812C6.19062 11.2812 4.71875 9.80937 4.71875 8C4.71875 6.19062 6.19062 4.71875 8 4.71875C9.80937 4.71875 11.2812 6.19062 11.2812 8C11.2812 9.80937 9.80937 11.2812 8 11.2812Z"
-                      fill="white"
+                      fill="black"
                     />
                   </g>
                   <defs>
@@ -120,7 +121,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="/"
+                href="https://x.com/?lang=en"
                 className="rounded-full flex bg-white social_icon_hover size-10 transition all duration-100 hover:size-11 items-center justify-center group"
               >
                 <svg
@@ -139,7 +140,7 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-          <h3>Discover our app</h3>
+          <h3 className="font-poppins font-medium text-[20px] text-paragraph pt-6 pb-4">Discover our app</h3>
           <div className="grid grid-cols-2 gap-2">
             <a href="https://play.google.com/store/apps?hl=en">
               <img src="GooglePlay.svg" alt="image" />
@@ -149,6 +150,9 @@ const Footer = () => {
             </a>
           </div>
         </nav>
+      </div>
+      <div className="flex justify-center items-center font-poppins font-medium text-[14px] text-paragraph">
+        <p>All rights {year} reserved@jadoo.co</p>
       </div>
     </footer>
   );
