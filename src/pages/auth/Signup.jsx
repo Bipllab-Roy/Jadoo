@@ -116,7 +116,7 @@ const Signup = () => {
             type="submit"
             className={`btn w-full py-3 rounded-xl font-semibold  text-black transition-all duration-300 `}
           >
-            Submit
+            Sign in
           </button>
         </form>
 
@@ -127,7 +127,7 @@ const Signup = () => {
             href="/login"
             className="text-blue-600 font-semibold hover:underline"
           >
-            Log In
+          
           </a>
         </p>
       </div>
