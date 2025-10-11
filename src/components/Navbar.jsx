@@ -1,11 +1,10 @@
-
 import { LuLogOut } from "react-icons/lu";
 import { useRef } from "react";
 import { Link, NavLink } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
-  const{currentUser, logout}=useAuth()
+  const { currentUser, logout } = useAuth();
 
   const navbar = useRef(null);
   const activeStyle = ({ isActive, isPending, isTransitioning }) =>
@@ -123,47 +122,83 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-2">
-          <Link
-            to={"/auth/login"}
-            className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
-          >
-            Login
-          </Link>
-          <Link
-            to={"/auth/signup"}
-            className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
-          >
-            Sign up
-          </Link>
-          <select
-            defaultValue="Server location"
-            className="select select-neutral w-15 border-0 bg-transparent"
-          >
-            <option>EN</option>
-            <option>BN</option>
-          </select>
+          {!currentUser ? (
+            <>
+              <Link
+                to={"/auth/login"}
+                className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
+              >
+                Login
+              </Link>
+              <Link
+                to={"/auth/signup"}
+                className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
+              >
+                Sign up
+              </Link>
+              <select
+                defaultValue="Server location"
+                className="select select-neutral w-15 border-0 bg-transparent"
+              >
+                <option>EN</option>
+                <option>BN</option>
+              </select>
+            </>
+          ) : (
+            <>
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} className=" m-1">
+                  <div className="avatar ml-3">
+                    <div className="ring-primary ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-2">
+                      <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-28 p-2 shadow-sm"
+                >
+                  <div
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={logout}
+                  >
+                    <span>
+                      <LuLogOut className="text-red-600" />
+                    </span>
+                    <span>Logout</span>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
 
           {/* Avarter */}
 
-          <div className="dropdown dropdown-end">
-            <div tabIndex={0}  className=" m-1">
-              <div className="avatar ml-3">
-                <div className="ring-primary ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-2">
-                  <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+          {/* {currentUser && (
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} className=" m-1">
+                <div className="avatar ml-3">
+                  <div className="ring-primary ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-2">
+                    <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                  </div>
+                </div>
+              </div>
+              <div
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-1 w-28 p-2 shadow-sm"
+              >
+                <div
+                  className="flex items-center gap-2 cursor-pointer"
+                  onClick={logout}
+                >
+                  <span>
+                    <LuLogOut className="text-red-600" />
+                  </span>
+                  <span>Logout</span>
                 </div>
               </div>
             </div>
-            <div
-              tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-1 w-28 p-2 shadow-sm" >
-             <div className="flex items-center gap-2 cursor-pointer" onClick={logout}>
-              <span>
-                 <LuLogOut  className="text-red-600"/>
-              </span>
-              <span>Logout</span>
-             </div>
-            </div>
-          </div>
+          )} */}
         </div>
       </div>
     </nav>

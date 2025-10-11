@@ -5,10 +5,13 @@ import NextTripSection from "../components/sections/NextTripSection"
 import SubscribeSection from "../components/sections/SubscribeSection"
 import TestimonialSection from "../components/sections/TestimonialSection"
 import ServiceSection from "../components/ServiceSection"
+import { useAuth } from "../hooks/useAuth"
 
 
 
 const Home = () => {
+const {currentUser}=useAuth();
+console.log(currentUser);
 
   return (
     <>

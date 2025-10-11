@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signOut  } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../service/firebase/firebase.config";
 
@@ -7,34 +13,57 @@ export const AuthContext = createContext({
   loading: true,
   signup: () => {},
   logout: () => {},
+  login: () => {},
 });
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("Roy");
   const [loading, setLoading] = useState(true);
 
-  useEffect(()=>{
-    setLoading(true)
-    const unsubscribe=onAuthStateChanged(auth,(user)=>{
-        setCurrentUser(user)
-        setLoading(false)
+  useEffect(() => {
+    setLoading(true);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);
     });
-    return ()=> unsubscribe()
-  }, [])
+    return () => unsubscribe();
+  }, []);
 
-  const signup = ( email, password) => { 
+  const signup = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
-  
+   .then(()=>{
+     sendEmailVerification(auth.currentUser)
+   .then(() => {
+    alert("Email verification sent! check your email")
+    // Email verification sent!
+    // ...
+  });
+   })
   };
-  const logout = ()=>{
-    signOut(auth)
-  }
+
+
+  const login = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+      
+      })
+      .catch((error) => {
+        
+        const errorMessage = error.message;
+      });
+  };
+
+  const logout = () => {
+    signOut(auth);
+  };
 
   const value = {
     currentUser,
     loading,
     signup,
-    logout
+    logout,
+    login
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

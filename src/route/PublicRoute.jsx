@@ -8,11 +8,19 @@ const PublicRoute = ({children}) => {
     const location = useLocation()
 
     if(loading)return <Loading/>
-
+    
     if (currentUser) {
-        return <Navigate to={"/"} state={{from: location}} replace />
+      return <Navigate to={"/"} state={{from: location}} replace />
     }
-  return children
+    
+    return children
+      //  if (!currentUser?.emailVerified) {
+      //    return <Navigate to={"/auth/login"} state={{from: location}} replace />
+      //   } 
+      //  if (currentUser && currentUser?.emailVerified) {
+      //    return children
+      //   } 
+   
 }
 
 export default PublicRoute
