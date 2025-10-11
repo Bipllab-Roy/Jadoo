@@ -9,17 +9,13 @@ const PublicRoute = ({children}) => {
 
     if(loading)return <Loading/>
     
-    if (currentUser) {
+    //if your exists and email is verified, redirect to home
+    if (currentUser && currentUser.emailVerified) {
       return <Navigate to={"/"} state={{from: location}} replace />
     }
     
+
     return children
-      //  if (!currentUser?.emailVerified) {
-      //    return <Navigate to={"/auth/login"} state={{from: location}} replace />
-      //   } 
-      //  if (currentUser && currentUser?.emailVerified) {
-      //    return children
-      //   } 
    
 }
 

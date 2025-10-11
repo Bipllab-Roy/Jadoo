@@ -42,9 +42,11 @@
 
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 const Signup = () => {
   const { signup, error, loading } = useAuth();
+  const navigate= useNavigate()
 
   const [userData, setUserData] = useState({
     email: "",
@@ -62,7 +64,7 @@ const Signup = () => {
       alert("Please fill all fields");
       return;
     }
-    signup(userData.email, userData.password);
+    signup(userData.email, userData.password, navigate);
   };
 
   return (

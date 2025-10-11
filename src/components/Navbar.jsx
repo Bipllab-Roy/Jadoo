@@ -94,7 +94,7 @@ const Navbar = () => {
           </div>
 
           <NavLink to={"/"} className="btn btn-ghost text-xl">
-            <img src="Logo.svg" alt="logo" />
+            <img src="/Logo.svg" alt="logo" />
           </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">

@@ -12,6 +12,9 @@ const ProtectedRoute = ({children}) => {
     if (!currentUser) {
         return <Navigate to={"/auth/login"} state={{from: location}} replace />
     }
+    if (currentUser && currentUser.emailVerified ===false) {
+        return <Navigate to={"/auth/login"} state={{from: location}} replace />
+    }
   return children
 }
 

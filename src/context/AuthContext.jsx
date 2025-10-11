@@ -29,14 +29,18 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const signup = (email, password) => {
+  const signup = (email, password,navigate) => {
     createUserWithEmailAndPassword(auth, email, password)
    .then(()=>{
      sendEmailVerification(auth.currentUser)
    .then(() => {
     alert("Email verification sent! check your email")
-    // Email verification sent!
-    // ...
+    console.log("Email verification sent! check your email")
+
+    if (navigate) {
+      return navigate("/auth/login")
+    }
+   
   });
    })
   };
