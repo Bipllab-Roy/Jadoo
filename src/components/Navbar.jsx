@@ -5,8 +5,9 @@ import { useAuth } from "../hooks/useAuth";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { currentUser, logout } = useAuth();
-
+  const { currentUser, logout , getUserInfo} = useAuth();
+  console.log(getUserInfo());
+  
   const navbar = useRef(null);
   const activeStyle = ({ isActive, isPending, isTransitioning }) =>
     [
@@ -31,8 +32,6 @@ const Navbar = () => {
   const isGithubLogin = currentUser?.providerData[0]?.providerId==="github.com" || 
   currentUser?.providerData[0]?.providerId==="facebook.com"
  
-console.log(isLogin);
-console.log(isGithubLogin);
 
   
 
@@ -202,7 +201,11 @@ console.log(isGithubLogin);
                 <div tabIndex={0} className=" m-1">
                   <div className="avatar ml-3">
                     <div className="ring-primary ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-2">
+
+                      {currentUser.photoURL ?
+                       currentUser.photoURL :
                       <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                      }
                     </div>
                   </div>
                 </div>

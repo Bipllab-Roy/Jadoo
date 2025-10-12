@@ -21,6 +21,7 @@ export const AuthContext = createContext({
   gmailLogin: () => {},
   githubLogin: () => {},
   facebookLogin: () => {},
+  getUserInfo: () => {},
 });
 
 const AuthProvider = ({ children }) => {
@@ -63,7 +64,6 @@ const AuthProvider = ({ children }) => {
     signOut(auth);
   };
 
-
   //.................{Gmail Login}................
   const gmailLogin = () => {
     const provider = new GoogleAuthProvider();
@@ -99,7 +99,7 @@ const AuthProvider = ({ children }) => {
         const token = credential.accessToken;
         const user = result.user;
         console.log(user.providerData[0].providerId);
-        
+
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
@@ -110,11 +110,9 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-
   //..............Facebook Login.......................
 
   const facebookLogin = () => {
-    
     const provider = new FacebookAuthProvider();
 
     signInWithPopup(auth, provider)
@@ -130,11 +128,23 @@ const AuthProvider = ({ children }) => {
         // Handle Errors here.
         const errorCode = error.code;
         console.log(errorCode);
-     
-      })
+      });
+  };
 
-       
+  const getUserInfo = () => {
+    const user = auth.currentUser;
+    if (user !== null) {
+      // The user object has basic properties such as display name, email, etc.
+      const email = user.email;
+      const displayName = user.displayName=email.slice(0,1);
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;
 
+      console.log(displayName);
+      console.log(email);
+      
+    }
   };
 
   const value = {
@@ -145,7 +155,8 @@ const AuthProvider = ({ children }) => {
     login,
     gmailLogin,
     githubLogin,
-    facebookLogin
+    facebookLogin,
+    getUserInfo,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
