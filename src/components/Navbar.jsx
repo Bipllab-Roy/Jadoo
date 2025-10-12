@@ -2,6 +2,7 @@ import { LuLogOut } from "react-icons/lu";
 import { useRef } from "react";
 import { Link, NavLink } from "react-router";
 import { useAuth } from "../hooks/useAuth";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
@@ -122,7 +123,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-2">
-          {!currentUser ? (
+          {!currentUser?.emailVerified ?(
             <>
               <Link
                 to={"/auth/login"}
@@ -158,6 +159,16 @@ const Navbar = () => {
                   tabIndex={0}
                   className="dropdown-content menu bg-base-100 rounded-box z-1 w-28 p-2 shadow-sm"
                 >
+                  <Link to={"/profile"}
+                    className="  flex items-center gap-2 cursor-pointer"
+                   
+                  >
+                    <button>
+                      <FaUser className="text-red-600" />
+                    </button>
+                    <span>Profile</span>
+                  </Link>
+
                   <div
                     className="flex items-center gap-2 cursor-pointer"
                     onClick={logout}
@@ -171,6 +182,8 @@ const Navbar = () => {
               </div>
             </>
           )}
+
+
 
           {/* Avarter */}
 
@@ -199,6 +212,8 @@ const Navbar = () => {
               </div>
             </div>
           )} */}
+
+
         </div>
       </div>
     </nav>

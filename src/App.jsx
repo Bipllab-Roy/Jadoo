@@ -10,6 +10,7 @@ import AuthLayout from "./layout/AuthLayout";
 import ProtectedRoute from "./route/ProtectedRoute";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
+import ProfilePage from "./pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
       { index: true, Component: Home},
       { path: "about", Component: About},
       { path: "destinations", Component: Destinations},
+      { path: "profile", Component:ProfilePage},
       
   ]
   },

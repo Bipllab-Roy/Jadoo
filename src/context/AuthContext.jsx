@@ -1,8 +1,12 @@
 import {
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
@@ -14,6 +18,9 @@ export const AuthContext = createContext({
   signup: () => {},
   logout: () => {},
   login: () => {},
+  gmailLogin: () => {},
+  githubLogin: () => {},
+  facebookLogin: () => {},
 });
 
 const AuthProvider = ({ children }) => {
@@ -29,31 +36,25 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const signup = (email, password,navigate) => {
-    createUserWithEmailAndPassword(auth, email, password)
-   .then(()=>{
-     sendEmailVerification(auth.currentUser)
-   .then(() => {
-    alert("Email verification sent! check your email")
-    console.log("Email verification sent! check your email")
+  const signup = (email, password, navigate) => {
+    createUserWithEmailAndPassword(auth, email, password).then(() => {
+      sendEmailVerification(auth.currentUser).then(() => {
+        alert("Email verification sent! check your email");
+        console.log("Email verification sent! check your email");
 
-    if (navigate) {
-      return navigate("/auth/login")
-    }
-   
-  });
-   })
+        if (navigate) {
+          return navigate("/auth/login");
+        }
+      });
+    });
   };
-
 
   const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-      
       })
       .catch((error) => {
-        
         const errorMessage = error.message;
       });
   };
@@ -62,12 +63,87 @@ const AuthProvider = ({ children }) => {
     signOut(auth);
   };
 
+
+  //.................{Gmail Login}................
+  const gmailLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(credential);
+
+        // ...
+      });
+  };
+
+  //..............GITHUB LOGIN.......................
+
+  const githubLogin = () => {
+    const provider = new GithubAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+      });
+  };
+
+
+  //..............Facebook Login.......................
+
+  const facebookLogin = () => {
+    
+    const provider = new FacebookAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+     
+      })
+
+       
+
+  };
+
   const value = {
     currentUser,
     loading,
     signup,
     logout,
-    login
+    login,
+    gmailLogin,
+    githubLogin,
+    facebookLogin
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
