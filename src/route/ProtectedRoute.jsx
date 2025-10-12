@@ -9,6 +9,13 @@ const ProtectedRoute = ({children}) => {
 
    if(loading)return <Loading/>
 
+   if (
+    currentUser?.providerData[0]?.providerId==="github.com"||
+    currentUser?.providerData[0]?.providerId==="facebook.com"
+) {
+    return children
+   }
+
     if (!currentUser) {
         return <Navigate to={"/auth/login"} state={{from: location}} replace />
     }

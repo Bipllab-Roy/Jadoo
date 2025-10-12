@@ -87,7 +87,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  //..............GITHUB LOGIN.......................
+  //..............GITHUB LOGIN...//////////////////
 
   const githubLogin = () => {
     const provider = new GithubAuthProvider();
@@ -98,6 +98,8 @@ const AuthProvider = ({ children }) => {
         const credential = GithubAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        console.log(user.providerData[0].providerId);
+        
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })

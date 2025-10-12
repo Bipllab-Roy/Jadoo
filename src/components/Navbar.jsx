@@ -26,6 +26,16 @@ const Navbar = () => {
     }
   });
 
+
+  const isLogin = !currentUser?.emailVerified 
+  const isGithubLogin = currentUser?.providerData[0]?.providerId==="github.com" || 
+  currentUser?.providerData[0]?.providerId==="facebook.com"
+ 
+console.log(isLogin);
+console.log(isGithubLogin);
+
+  
+
   return (
     <nav className=" fixed w-full" ref={navbar}>
       <div className="navbar py-12 container ">
@@ -123,9 +133,48 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-2">
-          {!currentUser?.emailVerified ?(
-            <>
-              <Link
+          
+                  {isGithubLogin ?
+                   <>
+                     <div className="dropdown dropdown-end">
+                <div tabIndex={0} className=" m-1">
+                  <div className="avatar ml-3">
+                    <div className="ring-primary ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-2">
+                      <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-28 p-2 shadow-sm"
+                >
+                  <Link to={"/profile"}
+                    className="  flex items-center gap-2 cursor-pointer"
+                   
+                  >
+                    <button>
+                      <FaUser className="text-red-600" />
+                    </button>
+                    <span>Profile</span>
+                  </Link>
+
+                  <div
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={logout}
+                  >
+                    <span>
+                      <LuLogOut className="text-red-600" />
+                    </span>
+                    <span>Logout</span>
+                  </div>
+                </div>
+              </div>
+                  </>: 
+                  <>
+
+                     {isLogin && 
+          <>
+           <Link
                 to={"/auth/login"}
                 className="btn bg-transparent border-[1px] border-transparent hover:border hover:border-black"
               >
@@ -144,9 +193,11 @@ const Navbar = () => {
                 <option>EN</option>
                 <option>BN</option>
               </select>
-            </>
-          ) : (
-            <>
+          </>
+          }
+
+           {!isLogin && 
+           
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} className=" m-1">
                   <div className="avatar ml-3">
@@ -180,8 +231,14 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-            </>
-          )}
+          
+           }
+                  </>
+                  }
+
+         
+           
+        
 
 
 
