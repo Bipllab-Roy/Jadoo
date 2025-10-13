@@ -185,9 +185,9 @@ const Signup = () => {
                   <button
                     type="button"
                     onClick={facebookLogin}
-                    className="flex items-center justify-center w-11 h-11 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
+                    className="flex cursor-pointer items-center justify-center w-11 h-11 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
                   >
-                    <FaFacebookF size={18} />
+                    <FaFacebookF size={20} />
                   </button>
                 </li>
 
@@ -195,9 +195,9 @@ const Signup = () => {
                   <button
                     type="button"
                     onClick={gmailLogin}
-                    className="flex items-center justify-center w-11 h-11 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
+                    className="flex cursor-pointer items-center justify-center w-11 h-11 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
                   >
-                    <FaGoogle size={18} />
+                    <FaGoogle size={20}  />
                   </button>
                 </li>
 
@@ -205,9 +205,9 @@ const Signup = () => {
                   <button
                     type="button"
                     onClick={githubLogin}
-                    className="flex items-center justify-center w-11 h-11 rounded-md bg-gray-800 text-white hover:bg-gray-900 transition"
+                    className="flex cursor-pointer items-center justify-center w-11 h-11 rounded-md bg-gray-800 text-white hover:bg-gray-900 transition"
                   >
-                    <FaGithub size={18} />
+                    <FaGithub size={20} />
                   </button>
                 </li>
               </ul>
