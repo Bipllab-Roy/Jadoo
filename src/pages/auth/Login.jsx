@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import InputBox from "../../components/ui/InputBox";
 
-
-
 const Signin = () => {
-  const {currentUser}=useState()
+  const { currentUser,resetPassword } = useAuth();
+    const [forgetPassword, setForgetPassword] = useState(false); 
+  const handleForgetPassword=()=>{
+    setForgetPassword(!forgetPassword)
+  }
+  
+ 
 
   const [user, setUser] = useState({
     email: "bipllabroy.bd2475@gmail.com",
@@ -23,45 +27,51 @@ const Signin = () => {
     if (!currentUser?.emailVerified) {
       console.log("Please verified your email, try again");
     }
-    login(user.email, user.password);  
-   
+    login(user.email, user.password);
   };
+
   return (
     <section className=" py-20 dark:bg-dark lg:py-[120px]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-gray-200 px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
-              <form onSubmit={handleLogin}>
-                <InputBox
-                  onChange={(e) => onChange(e)}
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                />
+              {forgetPassword ? (
+                <ForgetPassword handleForgetPassword={handleForgetPassword} resetPassword={resetPassword} />
+              ) : (
+                <>
+                  <form onSubmit={handleLogin}>
+                    <InputBox
+                      onChange={(e) => onChange(e)}
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                    />
 
-                <InputBox
-                  onChange={(e) => onChange(e)}
-                  type="text"
-                  name="password"
-                  placeholder="Password"
-                />
-                <div className="mb-10">
-                  <input
-                    type="submit"
-                    value="Sign In"
-                    className="w-full cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
-                  />
-                </div>
-              </form>
+                    <InputBox
+                      onChange={(e) => onChange(e)}
+                      type="text"
+                      name="password"
+                      placeholder="Password"
+                    />
+                    <div className="mb-10">
+                      <input
+                        type="submit"
+                        value="Sign In"
+                        className="w-full cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
+                      />
+                    </div>
+                  </form>
 
-              <button
-                type="button"
-                className="mb-2 inline-block text-base text-dark hover:text-primary hover:underline dark:text-black"
-              >
-                Forget Password?
-              </button>
-              
+                  <button
+                  onClick={handleForgetPassword}
+                    type="button"
+                    className="mb-2 cursor-pointer inline-block text-base text-dark hover:text-primary hover:underline dark:text-black"
+                  >
+                    Forget Password?
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -72,10 +82,32 @@ const Signin = () => {
 
 export default Signin;
 
+const ForgetPassword = ({handleForgetPassword, resetPassword}) => {
+ const [email,setEmail]=useState("");
+ const handleChange=(e)=>{
+  console.log(e.target.value);
+  
+  setEmail(e.target.value); 
+ }
 
+ const handleSetPassword=()=>{
+  resetPassword(email)
+ }
 
+  return (
+    <div>
+      <InputBox
+        onChange={(e) => handleChange(e)}
+        type="text"
+        name="email"
+        placeholder="Email"
+      />
 
-
+      <button onClick={handleSetPassword} className="btn btn-warning">Reset Password</button>
+      <button onClick={handleForgetPassword} className=" ml-3 cursor-pointer text-base text-black  hover:text-primary hover:underline">Back to login</button>
+    </div>
+  );
+};
 
 // import React, { useState } from "react";
 // import { Mail, Lock, Eye, EyeOff } from "lucide-react";
@@ -247,8 +279,3 @@ export default Signin;
 //     )}
 //   </button>
 // );
-
-
-
-
-

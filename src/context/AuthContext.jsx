@@ -5,9 +5,11 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../service/firebase/firebase.config";
@@ -22,6 +24,8 @@ export const AuthContext = createContext({
   githubLogin: () => {},
   facebookLogin: () => {},
   getUserInfo: () => {},
+  updateUserInfo: () => {},
+  resetPassword: () => {},
 });
 
 const AuthProvider = ({ children }) => {
@@ -37,6 +41,8 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+
+  //===============================createUserWithEmailAndPassword============
   const signup = (email, password, navigate) => {
     createUserWithEmailAndPassword(auth, email, password).then(() => {
       sendEmailVerification(auth.currentUser).then(() => {
@@ -50,6 +56,8 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+
+  //========================signInWithEmailAndPassword==============
   const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -60,6 +68,8 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+
+  //====================Logout==========
   const logout = () => {
     signOut(auth);
   };
@@ -131,20 +141,47 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  //===================getUserInfo====================
   const getUserInfo = () => {
     const user = auth.currentUser;
     if (user !== null) {
       // The user object has basic properties such as display name, email, etc.
       const email = user.email;
-      const displayName = user.displayName=email.slice(0,1);
+      const displayName = (user.displayName = email.slice(0, 1));
       const photoURL = user.photoURL;
       const emailVerified = user.emailVerified;
       const uid = user.uid;
 
       console.log(displayName);
       console.log(email);
-      
     }
+  };
+
+  //===========updateProfile========================
+  const updateUserInfo = (name, photo) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {
+        console.log("Profile updated!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        
+      });
+  };
+
+  //===============sendPasswordResetEmail============
+  const resetPassword = (email) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log("Password reset email sent!");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   const value = {
@@ -157,6 +194,8 @@ const AuthProvider = ({ children }) => {
     githubLogin,
     facebookLogin,
     getUserInfo,
+    updateUserInfo,
+    resetPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
